@@ -1,8 +1,22 @@
 ---
 - include: setup.yml
+  tags:
+    - setup
 - include: nginx.yml
+  tags:
+    - nginx
 - include: redis.yml
+  tags:
+    - redis
 - include: memcached.yml
+  tags:
+    - memcached
 - include: supervisord.yml
+  tags:
+    - supervisord
 - include: db.yml
+  tags:
+    - db
 - include: sentry.yml
+  tags:
+    - sentry
