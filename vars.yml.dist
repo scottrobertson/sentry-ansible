@@ -1,0 +1,14 @@
+---
+config_file: /etc/sentry.conf.py
+db_user: sentry
+db_password: sentry
+db_name: sentry
+url: "http://sentry.example.com"
+port: 9000
+email_host: "smtp.example.com"
+email_user: "smtp.example.com"
+email_password: "smtp.example.com"
+email_port: 25
+email_tls: False
+email_from: "smtp.example.com"
+secret_key: "ADD A SECRET KEY HERE"
