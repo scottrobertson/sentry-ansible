@@ -1,0 +1,9 @@
+---
+
+- pip: name=psycopg2
+- sudo: yes
+  sudo_user: postgres
+  action: postgresql_db name={{ db_user }}
+- sudo: yes
+  sudo_user: postgres
+  action: postgresql_user name={{ db_user }} password={{ db_password }} db={{ db_name }} priv=ALL role_attr_flags=SUPERUSER

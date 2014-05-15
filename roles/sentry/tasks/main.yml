@@ -1,0 +1,6 @@
+---
+- include: setup.yml
+- include: nginx.yml
+- include: supervisord.yml
+- include: db.yml
+- include: sentry.yml

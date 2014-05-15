@@ -1,0 +1,12 @@
+---
+- apt: name={{ item }} state=present
+  with_items:
+   - build-essential
+   - python-setuptools
+   - python-dev
+   - postgresql
+   - postgresql-contrib
+   - libpq-dev
+   - postgresql-contrib
+
+- easy_install: name=pip

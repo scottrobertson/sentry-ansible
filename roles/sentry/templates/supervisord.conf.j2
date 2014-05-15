@@ -1,0 +1,11 @@
+[program:sentry-web]
+command=sentry --config={{ config_file }} start
+autostart=true
+autorestart=true
+redirect_stderr=true
+
+[program:sentry-worker]
+command=sentry --config={{ config_file }} celery worker -B
+autostart=true
+autorestart=true
+redirect_stderr=true

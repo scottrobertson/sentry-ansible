@@ -1,0 +1,4 @@
+---
+- apt: name=supervisor state=installed
+- template: src=supervisord.conf.j2 dest=/etc/supervisor/conf.d/sentry.conf
+  notify: restart supervisor
