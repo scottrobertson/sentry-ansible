@@ -6,9 +6,9 @@ db_name: sentry
 url: "http://sentry.example.com"
 port: 9000
 email_host: "smtp.example.com"
-email_user: "smtp.example.com"
-email_password: "smtp.example.com"
+email_user: "email@example.com"
+email_password: "*********"
 email_port: 25
 email_tls: False
-email_from: "smtp.example.com"
+email_from: "sentry@example.com"
 secret_key: "ADD A SECRET KEY HERE"
