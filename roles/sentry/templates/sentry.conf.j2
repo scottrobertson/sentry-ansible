@@ -39,12 +39,14 @@ DATABASES = {
 
 # You'll need to install the required dependencies for Memcached:
 #   pip install python-memcached
+{% if enable_cache == True %}
 CACHES = {
  'default': {
      'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
      'LOCATION': ['{{ memcached_host }}:{{ memcached_port }}'],
  }
 }
+{% endif %}
 
 ###########
 ## Queue ##
