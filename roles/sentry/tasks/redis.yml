@@ -1,0 +1,2 @@
+---
+- apt: name=redis-server state=present

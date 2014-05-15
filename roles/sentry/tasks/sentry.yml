@@ -1,5 +1,11 @@
 ---
-- pip: name=sentry[postgres] state=present
+- pip: name={{ item }} state=present
+  with_items:
+    - python-memcached
+    - sentry[postgres]
+    - redis
+    - hiredis
+    - nydus
+  notify: restart supervisor
 - template: src=sentry.conf.j2 dest={{ config_file }}
   notify: restart supervisor
-- shell: sentry --config={{ config_file }} upgrade

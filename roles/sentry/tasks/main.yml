@@ -1,6 +1,8 @@
 ---
 - include: setup.yml
 - include: nginx.yml
+- include: redis.yml
+- include: memcached.yml
 - include: supervisord.yml
 - include: db.yml
 - include: sentry.yml
