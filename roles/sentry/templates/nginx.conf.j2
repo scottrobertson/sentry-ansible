@@ -22,7 +22,6 @@ server {
     client_body_buffer_size 150k;
 
     location / {
-      proxy_pass        http://localhost:{{ web_port }};
+      proxy_pass        http://{{ web_host }}:{{ web_port }};
     }
-
   }
