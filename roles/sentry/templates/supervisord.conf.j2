@@ -9,3 +9,6 @@ command=sentry --config={{ config_file }} celery worker -B
 autostart=true
 autorestart=true
 redirect_stderr=true
+
+[group:sentry]
+programs=sentry-web,sentry-worker
