@@ -1,10 +1,12 @@
 ---
 config_file: /etc/sentry.conf.py
+db_host: localhost
 db_user: sentry
 db_password: sentry
 db_name: sentry
-url: "http://sentry.example.com"
-port: 9000
+web_url: "http://sentry.example.com"
+web_port: 9000
+web_host: 0.0.0.0
 email_host: "smtp.example.com"
 email_user: "email@example.com"
 email_password: "*********"
@@ -12,3 +14,9 @@ email_port: 25
 email_tls: False
 email_from: "sentry@example.com"
 secret_key: "ADD A SECRET KEY HERE"
+enable_buffer: False
+enable_queue: True
+redis_host: localhost
+redis_port: 6379
+memcached_host: 127.0.0.1
+memcached_port: 11211

@@ -19,7 +19,7 @@ DATABASES = {
         'NAME': '{{ db_name }}',
         'USER': '{{ db_user }}',
         'PASSWORD': '{{ db_password }}',
-        'HOST': 'localhost',
+        'HOST': '{{ db_host }}',
         'PORT': '',
 
         # If you're using Postgres, we recommend turning on autocommit
@@ -42,7 +42,7 @@ DATABASES = {
 CACHES = {
  'default': {
      'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-     'LOCATION': ['127.0.0.1:11211'],
+     'LOCATION': ['{{ memcached_host }}:{{ memcached_port }}'],
  }
 }
 
@@ -55,8 +55,10 @@ CACHES = {
 # on a Python framework called Celery to manage queues.
 
 # You can enable queueing of jobs by turning off the always eager setting:
+{% if enable_queue == True %}
 CELERY_ALWAYS_EAGER = False
-BROKER_URL = 'redis://localhost:6379'
+{% endif %}
+BROKER_URL = 'redis://{{ redis_host }}:{{ redis_port }}'
 
 ####################
 ## Update Buffers ##
@@ -70,12 +72,15 @@ BROKER_URL = 'redis://localhost:6379'
 # You'll need to install the required dependencies for Redis buffers:
 #   pip install redis hiredis nydus
 
-# SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
+{% if enable_buffer == True %}
+SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
+{% endif %}
+
 SENTRY_REDIS_OPTIONS = {
     'hosts': {
         0: {
-            'host': '127.0.0.1',
-            'port': 6379,
+            'host': '{{ redis_host }}',
+            'port': {{ redis_port }},
         }
     }
 }
@@ -85,15 +90,15 @@ SENTRY_REDIS_OPTIONS = {
 ################
 
 # You MUST configure the absolute URI root for Sentry:
-SENTRY_URL_PREFIX = '{{ url }}'  # No trailing slash!
+SENTRY_URL_PREFIX = '{{ web_url }}'  # No trailing slash!
 
 # If you're using a reverse proxy, you should enable the X-Forwarded-Proto
 # and X-Forwarded-Host headers, and uncomment the following settings
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 
-SENTRY_WEB_HOST = '0.0.0.0'
-SENTRY_WEB_PORT = {{ port }}
+SENTRY_WEB_HOST = '{{ web_host }}'
+SENTRY_WEB_PORT = {{ web_port }}
 SENTRY_WEB_OPTIONS = {
     'workers': 3,  # the number of gunicorn workers
     'limit_request_line': 0,  # required for raven-js
