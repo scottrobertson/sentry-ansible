@@ -9,3 +9,6 @@
   notify: restart supervisor
 - template: src=sentry.conf.j2 dest={{ config_file }}
   notify: restart supervisor
+
+- command: sentry --config=/etc/sentry.conf.py upgrade --noinput
+
