@@ -46,6 +46,7 @@ CACHES = {
      'LOCATION': ['{{ memcached_host }}:{{ memcached_port }}'],
  }
 }
+SENTRY_CACHE = 'sentry.cache.django.DjangoCache'
 {% endif %}
 
 ###########
