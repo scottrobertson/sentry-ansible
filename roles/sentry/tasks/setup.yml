@@ -4,9 +4,11 @@
    - build-essential
    - python-setuptools
    - python-dev
+   - libffi-dev
    - postgresql
    - postgresql-contrib
    - libpq-dev
+   - libxml2-dev
+   - libxslt1-dev
    - postgresql-contrib
-
 - easy_install: name=pip
